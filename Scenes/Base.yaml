@@ -1,0 +1,99 @@
+Include:
+  - Datasources
+  - Background/Light
+  - Resolutions/High
+
+Animation:
+  Speed: 100
+  Crop: [1200, 2800]
+
+WaveformToVolume:
+  Size: 100
+  RadialScale: 2.
+  Polarizations: ["Plus"]
+  EllMax: 5
+  TimeOffset: -260  # Extraction radius is 250, plus 10 for the ActivationOffset
+
+VolumeRepresentation:
+  ColorBy: Plus strain
+  ScalarOpacityUnitDistance: 3.
+
+TransferFunctions:
+  - Field: Plus strain
+    TransferFunction:
+      Peaks:
+        Colormap: "Inferno (matplotlib)"
+        NumPeaks: 6
+        FirstPeak:
+          Position: 0.14
+          Opacity: 0.1
+        LastPeak:
+          Position: 0.22
+          Opacity: 0.5
+  - Field: Age
+    TransferFunction:
+      Custom:
+        Points:
+          - Position: 0
+            Opacity: 0
+          - Position: 0
+            Opacity: 0.6
+          - Position: 200
+            Opacity: 0
+          - Position: 300
+            Opacity: 0
+        Colormap:
+          Name: Grayscale
+
+Trajectories:
+  - Name: PrimaryObject
+    Tail:
+      LineWidth: 2
+      ColorBy: Age
+  - Name: SecondaryObject
+    Tail:
+      LineWidth: 2
+      ColorBy: Age
+
+Horizons:
+  - Name: PrimaryHorizon
+    InterpolateTime: True
+    Visibility:
+      Start: 0
+      End: 2563
+    Representation:
+      Representation: Surface
+      AmbientColor: [0., 0., 0.]
+      DiffuseColor: [0., 0., 0.]
+      Specular: 0.2
+      SpecularPower: 10
+      SpecularColor: [1., 1., 1.]
+  - Name: SecondaryHorizon
+    InterpolateTime: True
+    Visibility:
+      Start: 0
+      End: 2563
+    Representation:
+      Representation: Surface
+      AmbientColor: [0., 0., 0.]
+      DiffuseColor: [0., 0., 0.]
+      Specular: 0.2
+      SpecularPower: 10
+      SpecularColor: [1., 1., 1.]
+  - Name: CommonHorizon
+    Visibility:
+      Start: 2562.1079157980162
+      End: 4000
+    Representation:
+      Representation: Surface
+      AmbientColor: [0., 0., 0.]
+      DiffuseColor: [0., 0., 0.]
+      Specular: 0.2
+      SpecularPower: 10
+      SpecularColor: [1., 1., 1.]
+
+CameraShots:
+  - Position: [0., 0., 60.]
+    ViewUp: [0., 1., 0.]
+    FocalPoint: [0., 0., 0.]
+    ViewAngle: 60.

@@ -1,0 +1,5 @@
+
+Animation:
+  Replace:
+    FrameRate: 10
+    Crop: [2500, 2600]
